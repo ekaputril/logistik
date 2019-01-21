@@ -13,7 +13,7 @@ class Home extends CI_Controller {
 	{
                 $data['countSpkG'] = $this->Home_model->_getAllSpkG();
                 $data['countSpk'] = $this->Home_model->_getAllSpk();
-                $this->load->view('index', $data);
+                $this->load->view('user/index', $data);
         }
 
         public function Admin(){
