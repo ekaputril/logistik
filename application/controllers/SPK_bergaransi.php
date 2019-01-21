@@ -6,11 +6,18 @@ class SPK_bergaransi extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('SPK_bergaransi');
+		$this->load->model('SPK_bergaransi_model');
 	}
 	
 	public function index()
 	{
-       $this->load->view('index', $data);
-    }
+		$data['countSpkG'] = $this->Home_model->_getAllSpkG();
+		$data['countSpk'] = $this->Home_model->_getAllSpk();
+       	$this->load->view('user/spk_bergaransi/index',$data);
+	}
+	
+	public function create(){
+		
+		$this->load->view('user/spk_bergaransi/create_spk_bergaransi');
+	}
 }

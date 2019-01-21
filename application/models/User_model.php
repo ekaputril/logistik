@@ -62,10 +62,10 @@ class User_model extends CI_Model {
         }
     }
 	
-	public function selectAll($id){
+	public function selectAll($id_user){
         $this->db->select('*');
         $this->db->from('tbl_user');
-        $this->db->where('id', $id);
+        $this->db->where('id_user', $id_user);
         $query = $this->db->get();
         if($query->num_rows()==1){
             return $query->result();
@@ -129,7 +129,7 @@ class User_model extends CI_Model {
     {
 		// $this->db->limit($limit, $start);
 		$this->db->select('*');
-		$this->db->join('tutorial','tutorial.idTutorial=tbl_user.id');
+		$this->db->join('tbl_spk','tbl_spk.id_user=tbl_user.id_user');
 		if($search !='null')
 		{
 			$this->db->like('username',$search);
@@ -144,12 +144,12 @@ class User_model extends CI_Model {
     {
 		$this->db->select('*');
 		$this->db->from('tbl_user');
-		$this->db->join('tutorial','tutorial.id=tbl_user.id');
+		$this->db->join('tbl_spk','tbl_spk.id_user=tbl_user.id_user');
 		if($search !='null')
 		{
 			$this->db->like('username',$search);
 			$this->db->or_like('no',$search);
-			$this->db->or_like('namaTutorial',$search);
+			$this->db->or_like('perihal',$search);
 		}
         $query = $this->db->get('tbl_user', $search);
 		return $this->db->count_all('tbl_user');

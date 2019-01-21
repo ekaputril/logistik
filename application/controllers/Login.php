@@ -7,7 +7,7 @@
         public function index()
         {
             $data['title'] = 'Login';
-            $this->load->view('login', $data);
+            $this->load->view('home/login', $data);
         }
 
         public function logout()
@@ -48,7 +48,7 @@
             $this->form_validation->set_rules('username', 'username', 'trim|required');
             $this->form_validation->set_rules('password', 'password', 'trim|required|callback_cekDb');
             if ($this->form_validation->run() == FALSE) {
-                $this->load->view('login');
+                $this->load->view('home/login');
             } else {
                 $session_data = $this->session->userdata('logged_in');
                 $data['username'] = $session_data['username'];
@@ -56,7 +56,7 @@
                 if ($data['role']=='Admin') {
                     redirect('Home/Admin/');
                 }else{
-                    redirect('Home');
+                    redirect('Home/User');
                 }
             }
         }

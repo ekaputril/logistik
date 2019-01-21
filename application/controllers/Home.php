@@ -13,22 +13,54 @@ class Home extends CI_Controller {
 	{
                 $data['countSpkG'] = $this->Home_model->_getAllSpkG();
                 $data['countSpk'] = $this->Home_model->_getAllSpk();
-                $this->load->view('user/index', $data);
+                $this->load->view('home/index', $data);
         }
 
-        public function Admin(){
+        public function User(){
+                if($this->session->has_userdata('logged_in')) {
+                        $session_data = $this->session->userdata('logged_in');
+            
+                        if($session_data['role'] != 'User') {
+                            redirect('home');
+                        }
+                    } else {
+                        redirect('Login');
+                    }
                 $session_data=$this->session->userdata('logged_in');
                 $data['username']=$session_data['username'];
                 $data['role']=$session_data['role'];
-                $data['id']=$session_data['id'];
+                $data['id_user']=$session_data['id_user'];
                 $data['title'] = 'Admin';
 
                 $this->load->model('User_model');
-                $this->load->model('Admin_model');
 
-                $id = $data['id'];
+                $id_user = $data['id_user'];
                 $user = $data['username'];
-                $data['username'] = $this->User_model->SelectAll($id,$user);
+                $data['username'] = $this->User_model->SelectAll($id_user,$user);
+                $data['countSpkG'] = $this->Home_model->_getAllSpkG();
+                $data['countSpk'] = $this->Home_model->_getAllSpk();
+                $this->load->view('user/index',$data);
+        }
+
+        public function Admin(){
+                if($this->session->has_userdata('logged_in')) {
+                        $session_data = $this->session->userdata('logged_in');
+            
+                        if($session_data['role'] != 'Admin') {
+                            redirect('home');
+                        }
+                    } else {
+                        redirect('Login');
+                    }
+                $session_data=$this->session->userdata('logged_in');
+                $data['username']=$session_data['username'];
+                $data['role']=$session_data['role'];
+                $data['id_user']=$session_data['id_user'];
+                $data['title'] = 'Admin';
+                $this->load->model('User_model');
+                $id_user = $data['id_user'];
+                $user = $data['username'];
+                $data['username'] = $this->User_model->SelectAll($id_user,$user);
                 $data['countSpkG'] = $this->Home_model->_getAllSpkG();
                 $data['countSpk'] = $this->Home_model->_getAllSpk();
                 $this->load->view('admin/index',$data);
