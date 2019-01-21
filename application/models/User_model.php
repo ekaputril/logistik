@@ -10,7 +10,7 @@ class User_model extends CI_Model {
 	}
 	
 	public function login($username,$password){
-    	$this->db->select('id_user,username,password,nama,nip,role');
+    	$this->db->select('*');
     	$this->db->from('tbl_user');
     	$this->db->where('username',$username);
 		$this->db->where('password',MD5($password));
@@ -37,14 +37,14 @@ class User_model extends CI_Model {
 	{
 		$password = $this->input->post('password');
         $pass = md5($password);
-        $company = 'Member';
+        $role = 'User';
         $photo = 'default.png';
 		$object = array('username' => $this->input->post('username'),
-						'email' => $this->input->post('email'), 
+						'nama' => $this->input->post('nama'), 
 						'password' => $pass,
-						'company' => $company,
+						'role' => $role,
 						'photo' => $photo);
-		$insert = $this->db->insert('users',$object);
+		$insert = $this->db->insert('tbl_user',$object);
 		if (!$insert && $this->db->_error_number()==1062) {
 			echo "<script>alert('Username is already used'); </script>";
 		}
@@ -52,7 +52,7 @@ class User_model extends CI_Model {
 
 	public function register($username){
         $this->db->select('username');
-        $this->db->from('users');
+        $this->db->from('tbl_user');
         $this->db->where('username', $username);
         $query = $this->db->get();
         if($query->num_rows()==1){
@@ -64,7 +64,7 @@ class User_model extends CI_Model {
 	
 	public function selectAll($id){
         $this->db->select('*');
-        $this->db->from('users');
+        $this->db->from('tbl_user');
         $this->db->where('id', $id);
         $query = $this->db->get();
         if($query->num_rows()==1){
@@ -76,7 +76,7 @@ class User_model extends CI_Model {
 	
 	public function getDataUser()
 	{
-		$query = $this->db->get('users');
+		$query = $this->db->get('tbl_user');
 		return $query->result();
 		
 	}
@@ -84,8 +84,8 @@ class User_model extends CI_Model {
 	public function getUser($id)
 	{
 		$this->db->select('*');
-        $this->db->from('users');
-        $this->db->where('company', 'users');
+        $this->db->from('tbl_user');
+        $this->db->where('role', 'users');
         $query = $this->db->get();
         if($query->num_rows()>0){
             return $query->result();
@@ -99,7 +99,7 @@ class User_model extends CI_Model {
 		$object = array('username' => $this->input->post('username'),
 						'email' => $this->input->post('email'));
 		$this->db->where('id',$id);
-		$this->db->update('users', $object);
+		$this->db->update('tbl_user', $object);
 	}
 	
 	public function updatePass($id)
@@ -111,7 +111,7 @@ class User_model extends CI_Model {
                 'password' => $pass
             );
             $this->db->where('id', $id);
-            $this->db->update('users', $object);
+            $this->db->update('tbl_user', $object);
 
 	}
 	
@@ -121,7 +121,7 @@ class User_model extends CI_Model {
                 'photo' => $this->upload->data('file_name')
             );
             $this->db->where('id', $id);
-            $this->db->update('users', $object);
+            $this->db->update('tbl_user', $object);
 
 	}
 
@@ -129,30 +129,30 @@ class User_model extends CI_Model {
     {
 		// $this->db->limit($limit, $start);
 		$this->db->select('*');
-		$this->db->join('tutorial','tutorial.idTutorial=users.id');
+		$this->db->join('tutorial','tutorial.idTutorial=tbl_user.id');
 		if($search !='null')
 		{
 			$this->db->like('username',$search);
 			$this->db->or_like('no',$search);
 			$this->db->or_like('namaTutorial',$search);
 		}
-        $query = $this->db->get('users', $limit, $start);
+        $query = $this->db->get('tbl_user', $limit, $start);
         return ($query->num_rows() > 0) ? $query->result() : false;
     }
 
 	public function getTotal($search='')
     {
 		$this->db->select('*');
-		$this->db->from('users');
-		$this->db->join('tutorial','tutorial.id=users.id');
+		$this->db->from('tbl_user');
+		$this->db->join('tutorial','tutorial.id=tbl_user.id');
 		if($search !='null')
 		{
 			$this->db->like('username',$search);
 			$this->db->or_like('no',$search);
 			$this->db->or_like('namaTutorial',$search);
 		}
-        $query = $this->db->get('users', $search);
-		return $this->db->count_all('users');
+        $query = $this->db->get('tbl_user', $search);
+		return $this->db->count_all('tbl_user');
 	}
 }
 ?>

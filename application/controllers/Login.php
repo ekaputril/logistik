@@ -27,10 +27,11 @@
                 $session_array = array();
                 foreach ($result as $key) {
                     $session_array = array(
-                        'id'=>$key->id,
+                        'id_user'=>$key->id,
                         'username'=>$key->username,
-                        'email' => $key->email,
-                        'company'=>$key->company
+                        'nama' => $key->nama,
+                        'nip' => $key->nip,
+                        'role'=>$key->role
                     );
                     $this->session->set_userdata('logged_in',$session_array);
                 }
@@ -51,9 +52,11 @@
             } else {
                 $session_data = $this->session->userdata('logged_in');
                 $data['username'] = $session_data['username'];
-                $data['company'] = $session_data['company'];
-                if ($data['company']=='Admin') {
+                $data['role'] = $session_data['role'];
+                if ($data['role']=='Admin') {
                     redirect('Home/Admin/');
+                }else{
+                    redirect('Home');
                 }
             }
         }
