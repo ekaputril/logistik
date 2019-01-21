@@ -105,25 +105,25 @@
             <span>Master</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <h6 class="dropdown-header">Login Screens:</h6>
+            <h6 class="dropdown-header">Login:</h6>
             <a class="dropdown-item" href="<?php echo base_url('/login'); ?>">Login</a>
             <a class="dropdown-item" href="<?php echo base_url('/register'); ?>">Register</a>
             <a class="dropdown-item" href="<?php echo site_url('/forgot-password');?>">Forgot Password</a>
             <div class="dropdown-divider"></div>
-            <h6 class="dropdown-header">Other Pages:</h6>
-            <a class="dropdown-item" href="<?php echo site_url('/404');?>">404 Page</a>
-            <a class="dropdown-item" href="<?php echo site_url('/blank');?>">Blank Page</a>
+            <h6 class="dropdown-header">Surat:</h6>
+            <a class="dropdown-item" href="<?php echo site_url('/SPK_bergaransi');?>">SPK Bergaransi</a>
+            <a class="dropdown-item" href="<?php echo site_url('/SPK');?>">SPK Tanpa Garansi</a>
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url('/charts');?>">
+          <a class="nav-link" href="<?php echo site_url('laporan');?>">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
+            <span>Laporan</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo site_url('/tables');?>">
+          <a class="nav-link" href="<?php echo site_url('transaksi');?>">
             <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
+            <span>Transaksi</span></a>
         </li>
       </ul>
 
