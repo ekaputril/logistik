@@ -1,4 +1,4 @@
-<?php $this->load->view('admin/layouts/base_start') ?>
+<?php $this->load->view('home/layouts/base_start') ?>
     <div id="wrapper">
 
       <!-- Sidebar -->
@@ -15,11 +15,6 @@
             <span>Master</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <h6 class="dropdown-header">Login:</h6>
-            <a class="dropdown-item" href="<?php echo base_url('/login'); ?>">Login</a>
-            <a class="dropdown-item" href="<?php echo base_url('/register'); ?>">Register</a>
-            <a class="dropdown-item" href="<?php echo site_url('/forgot-password');?>">Forgot Password</a>
-            <div class="dropdown-divider"></div>
             <h6 class="dropdown-header">Surat:</h6>
             <a class="dropdown-item" href="<?php echo site_url('/SPK_bergaransi');?>">SPK Bergaransi</a>
             <a class="dropdown-item" href="<?php echo site_url('/SPK');?>">SPK Tanpa Garansi</a>
@@ -52,28 +47,12 @@
           <!-- Icon Cards-->
           <div class="row">
             <div class="col-xl-3 col-sm-6 mb-3">
-              <div class="card text-white bg-primary o-hidden h-100">
+              <div class="card text-white bg-success o-hidden h-100">
                 <div class="card-body">
                   <div class="card-body-icon">
-                    <i class="fas fa-fw fa-comments"></i>
+                    <i class="fas fa-fw fa-file"></i>
                   </div>
-                  <div class="mr-5">26 New Messages!</div>
-                </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                  <span class="float-left">View Details</span>
-                  <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                </a>
-              </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-3">
-              <div class="card text-white bg-warning o-hidden h-100">
-                <div class="card-body">
-                  <div class="card-body-icon">
-                    <i class="fas fa-fw fa-list"></i>
-                  </div>
-                  <div class="mr-5">11 New Tasks!</div>
+                  <div class="mr-5"><h2><?php echo count($countSpkG); ?></h2> Surat Perintah Kerja Bergaransi</div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1" href="#">
                   <span class="float-left">View Details</span>
@@ -87,25 +66,9 @@
               <div class="card text-white bg-success o-hidden h-100">
                 <div class="card-body">
                   <div class="card-body-icon">
-                    <i class="fas fa-fw fa-shopping-cart"></i>
+                    <i class="fas fa-fw fa-file"></i>
                   </div>
-                  <div class="mr-5">123 New Orders!</div>
-                </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                  <span class="float-left">View Details</span>
-                  <span class="float-right">
-                    <i class="fas fa-angle-right"></i>
-                  </span>
-                </a>
-              </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 mb-3">
-              <div class="card text-white bg-danger o-hidden h-100">
-                <div class="card-body">
-                  <div class="card-body-icon">
-                    <i class="fas fa-fw fa-life-ring"></i>
-                  </div>
-                  <div class="mr-5">13 New Tickets!</div>
+                  <div class="mr-5"><h2><?php echo count($countSpk); ?></h2> Surat Perintah Kerja Tanpa Garansi</div>
                 </div>
                 <a class="card-footer text-white clearfix small z-1" href="#">
                   <span class="float-left">View Details</span>
@@ -117,4 +80,4 @@
             </div>
           </div>
         </div>
-        <?php $this->load->view('admin/layouts/base_end') ?>
+        <?php $this->load->view('home/layouts/base_end') ?>

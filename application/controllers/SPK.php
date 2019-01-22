@@ -6,11 +6,12 @@ class SPK extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('SPK');
+		$this->load->model('SPK_model');
 	}
 	
 	public function index()
 	{
-       $this->load->view('index', $data);
+		$data['Spk'] = $this->SPK_model->getDataSpk();
+        $this->load->view('home/spk/index',$data);
     }
 }

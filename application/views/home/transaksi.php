@@ -15,11 +15,6 @@
             <span>Master</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <h6 class="dropdown-header">Login:</h6>
-            <a class="dropdown-item" href="<?php echo base_url('/login'); ?>">Login</a>
-            <a class="dropdown-item" href="<?php echo base_url('/register'); ?>">Register</a>
-            <a class="dropdown-item" href="<?php echo site_url('/forgot-password');?>">Forgot Password</a>
-            <div class="dropdown-divider"></div>
             <h6 class="dropdown-header">Surat:</h6>
             <a class="dropdown-item" href="<?php echo site_url('/SPK_bergaransi');?>">SPK Bergaransi</a>
             <a class="dropdown-item" href="<?php echo site_url('/SPK');?>">SPK Tanpa Garansi</a>
@@ -55,7 +50,7 @@
               <div class="card text-white bg-success o-hidden h-100">
                 <div class="card-body">
                   <div class="card-body-icon">
-                    <i class="fas fa-fw fa-shopping-cart"></i>
+                    <i class="fas fa-fw fa-file"></i>
                   </div>
                   <div class="mr-5"><h2><?php echo count($countSpkG); ?></h2> Surat Perintah Kerja Bergaransi</div>
                 </div>
@@ -71,7 +66,7 @@
               <div class="card text-white bg-success o-hidden h-100">
                 <div class="card-body">
                   <div class="card-body-icon">
-                    <i class="fas fa-fw fa-shopping-cart"></i>
+                    <i class="fas fa-fw fa-file"></i>
                   </div>
                   <div class="mr-5"><h2><?php echo count($countSpk); ?></h2> Surat Perintah Kerja Tanpa Garansi</div>
                 </div>
