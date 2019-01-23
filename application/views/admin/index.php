@@ -1,4 +1,4 @@
-<?php $this->load->view('home/layouts/base_start') ?>
+<?php $this->load->view('admin/layouts/base_start') ?>
     <div id="wrapper">
 
       <!-- Sidebar -->
@@ -80,4 +80,4 @@
             </div>
           </div>
         </div>
-        <?php $this->load->view('home/layouts/base_end') ?>
+        <?php $this->load->view('admin/layouts/base_end') ?>
